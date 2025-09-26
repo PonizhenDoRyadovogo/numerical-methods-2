@@ -40,7 +40,7 @@ def double_count_error(ivp: IVP2, h: int):
     err_yp = np.abs(yp_h - yp_h2_on_h)
     return (x_h, y_h, yp_h), (x_h2, y_h2, yp_h2), (err_y, err_yp)
 
-def find_max_h(ivp: IVP2, tol=5e-4, h_start=1e-3, grow=2.0, max_growth_iters=25, bisect_iters=25):
+def find_max_h(ivp: IVP2, tol=5e-4, h_start=1e-3, grow=2.0, max_growth_iters=100, bisect_iters=100):
     h_good, h_bad = None, None
     h = h_start
     for _ in range(max_growth_iters):
