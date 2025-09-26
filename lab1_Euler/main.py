@@ -47,8 +47,8 @@ def solve_and_plot(ivp: IVP, N: int, title: str = "Метод Эйлера"):
 
     # Графики
     plt.figure()
-    plt.plot(x, y, label="Численное решение (Эйлер)")
-    plt.plot(sol.t, sol.y[0], label = "Эталонное решение")
+    plt.plot(x, y, label="Численное решение (Эйлер)", linewidth=5, color='m')
+    plt.plot(sol.t, sol.y[0], label = "Эталонное решение", linestyle="--", color='k')
     plt.xlabel("x"); plt.ylabel("y"); plt.title(title); plt.legend(); plt.grid(True)
 
     plt.figure()
