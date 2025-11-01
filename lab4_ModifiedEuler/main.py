@@ -108,15 +108,15 @@ if __name__ == "__main__":
 
     print("== ЧМ2, Задание 4 ==")
     print(f"[а] Модифицированный метод ломанных:       max Runge-error ≈ {float(np.max(R_a)):.6e}")
-    print(f"[б] Метод Эйлера-Коши:                     max Runge-error ≈ {float(np.max(R_b)):.6e}")
-    print(f"[с] Усовершенствованный метод Эйлера-Коши: max Runge-error ≈ {float(np.max(R_c)):.6e}")
+    print(f"[б] Усовершенстованный метод Эйлера-Коши (явный):                     max Runge-error ≈ {float(np.max(R_b)):.6e}")
+    print(f"[с] Усовершенствованный метод Эйлера-Коши (неявный): max Runge-error ≈ {float(np.max(R_c)):.6e}")
     print(f"(6) Δ_max = max_i |y_a - y_b| ≈ {delta_ab_max:.6e} при x ≈ {x_at_ab_max:.6g}")
 
     # --- графики решений ---
     plt.figure()
     plt.plot(x_a, y_a, label="(а) Модифицированный метод ломаных", linewidth=6)
-    plt.plot(x_b, y_b, label="(б) Метод Эйлера-Коши", linewidth=3)
-    plt.plot(x_c, y_c, label="(в) Модифицированный метод Эйлера-Коши (4 итерации)", linewidth=2, linestyle="--")
+    plt.plot(x_b, y_b, label="(б) Усовершенстованный метод Эйлера-Коши (явный)", linewidth=3)
+    plt.plot(x_c, y_c, label="(в) Усовершенствованный метод Эйлера-Коши (неявный) (4 итерации)", linewidth=2, linestyle="--")
     plt.xlabel("x")
     plt.ylabel("y(x)")
     plt.title("Модифицированные методы Эйлера (а, б, в)")
@@ -126,8 +126,8 @@ if __name__ == "__main__":
 
     # --- графики погрешностей (двойной счёт p=2) ---
     plot_error(x_a_R, R_a, title="Погрешность (а) Модифицированный метод ломаных")
-    plot_error(x_b_R, R_b, title="Погрешность (б) Метод Эйлера-Коши")
-    plot_error(x_c_R, R_c, title="Погрешность (в) Модифицированном методе Эйлера-Коши (4 итерации)")
+    plot_error(x_b_R, R_b, title="Погрешность (б) Усовершенстованный метод Эйлера-Коши (явный)")
+    plot_error(x_c_R, R_c, title="Погрешность (в) Усовершенствованный метод Эйлера-Коши (неявный) (4 итерации)")
 
     # --- график Δ_i между (а) и (б) по формуле (6) ---
     plt.figure()
@@ -136,7 +136,7 @@ if __name__ == "__main__":
     plt.scatter([x_a[imax]], [delta_ab[imax]], s=30, zorder=3, label=f"Δ_max≈{delta_ab_max:.3e} при x≈{x_a[imax]:.3g}")
     plt.yscale("log")
     plt.xlabel("x"); plt.ylabel("Δ_i")
-    plt.title("Сравнение (а) vs (б) по формуле (6)")
+    plt.title("Сравнение (а) vs (б) по формуле (*)")
     plt.legend(); plt.grid(True, which="both", alpha=0.3)
     plt.tight_layout()
 
