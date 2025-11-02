@@ -105,8 +105,8 @@ def solve_all(ivp: IVP):
 def plot_all(x, y_ab4, y_am4, y_ref, delta, title_suffix=""):
     # Решения
     plt.figure()
-    plt.plot(x, y_ab4, label="Явный Адамс", linewidth=3)
-    plt.plot(x, y_am4, "--", label="Неявный Адамс)", linewidth=3)
+    plt.plot(x, y_ab4, label="Экстраполяционный Адамс", linewidth=3)
+    plt.plot(x, y_am4, "--", label="Интерполяционный Адамс)", linewidth=3)
     plt.plot(x, y_ref, "-", label="solve_ivp (ref)", linewidth=2, alpha=0.8)
     plt.xlabel("x"); plt.ylabel("y(x)")
     plt.title(f"Адамс 4-го порядка + reference {title_suffix}")
@@ -120,7 +120,7 @@ def plot_all(x, y_ab4, y_am4, y_ref, delta, title_suffix=""):
                 label=f"Δ_max≈{float(delta[imax]):.3e} при x≈{float(x[imax]):.3g}")
     plt.yscale("log")
     plt.xlabel("x"); plt.ylabel("ошибка")
-    plt.title("Явный Адамс vs Неявный Адамс: разность решений")
+    plt.title("Экстраполяционный Адамс vs интерполяционный Адамс: разность решений")
     plt.legend(); plt.grid(True, which="both", alpha=0.3); plt.tight_layout()
 
     print(f"Δ_max (AB4 vs AM4) = {float(delta.max()):.6e} в x ≈ {float(x[imax]):.6g}")
